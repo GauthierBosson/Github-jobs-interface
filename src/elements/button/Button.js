@@ -38,7 +38,7 @@ const Button = styled.button`
 
 Button.propTypes = {
   type: PropTypes.oneOf(["primary", "secondary"]).isRequired,
-  children: PropTypes.string.isRequired,
+  children: PropTypes.isRequired,
 };
 
 export default Button;

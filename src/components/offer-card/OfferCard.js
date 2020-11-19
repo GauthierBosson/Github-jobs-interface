@@ -1,9 +1,10 @@
-import styled from "styled-components";
+import styled, { withTheme } from "styled-components";
 
 const CardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   padding: 3rem 2rem 1.5rem 2rem;
   background-color: var(--elements-bg);
   border-radius: 0.6rem;
@@ -15,13 +16,18 @@ const Logo = styled.span`
   left: 2rem;
   width: 50px;
   height: 50px;
-  border: 1px solid black;
   border-radius: 15px;
   transform: translateY(-50%);
-`
+  background-image: ${(props) => `url('${props.companyLogo}')`};
+  background-size: 90%;
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-color: ${(props) =>
+    props.companyLogo === null ? "salmon" : "white"};
+`;
 
 const GeneralInfos = styled.p`
-  color: var(--text)
+  color: var(--text);
 `;
 
 const JobTitle = styled.h3`
@@ -33,15 +39,26 @@ const Tags = styled.p`
   color: var(--tags);
   font-size: 1.4rem;
   font-weight: bold;
-`
+`;
 
-const OfferCard = () => (
+const OfferCard = ({
+  type,
+  title,
+  company,
+  location,
+  companyLogo,
+  createdAt,
+}) => (
   <CardContainer>
-    <Logo />
-    <GeneralInfos>2d ago • Full time</GeneralInfos>
-    <JobTitle>Senior Application Engineer</JobTitle>
-    <GeneralInfos>Extreme Division</GeneralInfos>
-    <Tags>Anywhere</Tags>
+    <Logo companyLogo={companyLogo} />
+    <GeneralInfos>
+      {createdAt}d ago • {type}
+    </GeneralInfos>
+    <JobTitle>{title}</JobTitle>
+    <GeneralInfos>
+      {company.length > 30 ? company.slice(0, 30) + "..." : company}
+    </GeneralInfos>
+    <Tags>{location}</Tags>
   </CardContainer>
 );
 
