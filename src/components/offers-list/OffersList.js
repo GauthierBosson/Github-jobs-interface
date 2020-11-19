@@ -19,6 +19,13 @@ const OffersWrapper = styled.div`
   }
 `;
 
+const BtnWrapper = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 3rem;
+`;
+
 const OffersList = ({ offers, canFetchMore, fetchMore, isFetchingMore }) => {
   const currentDate = new Date();
 
@@ -29,11 +36,12 @@ const OffersList = ({ offers, canFetchMore, fetchMore, isFetchingMore }) => {
           <React.Fragment key={i}>
             {group.data.map((job) => {
               const jobDate = new Date(job.created_at);
-              const dateDiff = currentDate.getTime() - jobDate.getTime()
-              const days = Math.ceil(dateDiff / (1000 * 360 * 24))
+              const dateDiff = currentDate.getTime() - jobDate.getTime();
+              const days = Math.ceil(dateDiff / (1000 * 360 * 24));
               return (
                 <OfferCard
                   key={job.id}
+                  id={job.id}
                   type={job.type}
                   title={job.title}
                   company={job.company}
@@ -46,13 +54,15 @@ const OffersList = ({ offers, canFetchMore, fetchMore, isFetchingMore }) => {
           </React.Fragment>
         ))}
       </OffersWrapper>
-      <button
-        //type="primary"
-        onClick={() => fetchMore()}
-        disabled={!canFetchMore || isFetchingMore}
-      >
-        Load More
-      </button>
+      <BtnWrapper>
+        <Button
+          type="primary"
+          onClick={() => fetchMore()}
+          disabled={!canFetchMore || isFetchingMore}
+        >
+          Load More
+        </Button>
+      </BtnWrapper>
     </>
   );
 };

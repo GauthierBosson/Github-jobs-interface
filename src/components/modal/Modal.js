@@ -3,11 +3,11 @@ import { createPortal } from "react-dom";
 import styled from "styled-components";
 
 const ModalBackground = styled.div`
+  padding: 1.5rem;
   position: fixed;
   top: 0;
   height: 100vh;
   width: 100%;
-  z-index: 9999;
   background-color: hsla(0, 0%, 0%, 0.5);
   display: flex;
   justify-content: center;
@@ -15,9 +15,15 @@ const ModalBackground = styled.div`
 `;
 
 const ModalCard = styled.div`
-  width: 50%;
-  height: 50%;
-  background-color: white;
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width: 100%;
+  min-height: 25%;
+  padding: 1rem 2.5rem 2.5rem 2.5rem;
+  background-color: var(--bg);
+  border-radius: .6rem;
 `;
 
 const modalRoot = document.getElementById("modal-root");
@@ -40,7 +46,7 @@ function Modal({ isOpen, closeModal, children }) {
   return isOpen
     ? createPortal(
         <ModalBackground onClick={() => closeModal()}>
-          <ModalCard>{children}</ModalCard>
+          <ModalCard onClick={e => e.stopPropagation()}>{children}</ModalCard>
         </ModalBackground>,
         el
       )

@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from "styled-components";
 
 const SwitchContainer = styled.div`
   display: flex;
@@ -6,8 +6,9 @@ const SwitchContainer = styled.div`
   justify-content: space-around;
   min-height: 50px;
   width: 100px;
-  background: url('/assets/desktop/icon-sun.svg') no-repeat left center, url('assets/desktop/icon-moon.svg') no-repeat right center;
-`
+  background: url("/assets/desktop/icon-sun.svg") no-repeat left center,
+    url("assets/desktop/icon-moon.svg") no-repeat right center;
+`;
 
 const SwitchBody = styled.label`
   background-color: white;
@@ -26,29 +27,33 @@ const SwitchBody = styled.label`
     border-radius: 50%;
     background-color: var(--primary-btn);
     margin: 2px 4px 2px 4px;
-    transition: .2s;
+    transition: 0.2s;
   }
 
   &:hover::after {
     background-color: var(--primary-btn-h);
   }
-`
+`;
 
 const SwitchInput = styled.input`
   position: absolute;
   right: 9999px;
-  
+
   &:checked + ${SwitchBody}:after {
     margin-left: 25px;
-    transition: .2s;
+    transition: 0.2s;
   }
-`
+`;
 
-const Switch = () => (
+const Switch = ({ toggleMode }) => (
   <SwitchContainer>
-    <SwitchInput type="checkbox" id="theme" />
+    <SwitchInput
+      type="checkbox"
+      id="theme"
+      onChange={() => toggleMode()}
+    />
     <SwitchBody htmlFor="theme" />
   </SwitchContainer>
-)
+);
 
-export default Switch
+export default Switch;

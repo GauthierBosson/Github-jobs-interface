@@ -5,6 +5,10 @@ const LayoutElements = styled.div`
   background-size: auto 14rem;
   min-height: 100vh;
   width: 100%;
+
+  @media screen and (min-width: 640px) {
+    background-size: 100% 14rem;
+  }
 `
 
 const WidthDelimiter = styled.div`

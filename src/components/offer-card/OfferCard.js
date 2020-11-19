@@ -1,6 +1,7 @@
-import styled, { withTheme } from "styled-components";
+import styled from "styled-components";
+import { Link } from "react-router-dom";
 
-const CardContainer = styled.div`
+export const CardContainer = styled.div`
   position: relative;
   display: flex;
   flex-direction: column;
@@ -10,7 +11,7 @@ const CardContainer = styled.div`
   border-radius: 0.6rem;
 `;
 
-const Logo = styled.span`
+export const Logo = styled.span`
   position: absolute;
   top: 0;
   left: 2rem;
@@ -26,22 +27,23 @@ const Logo = styled.span`
     props.companyLogo === null ? "salmon" : "white"};
 `;
 
-const GeneralInfos = styled.p`
+export const GeneralInfos = styled.p`
   color: var(--text);
 `;
 
-const JobTitle = styled.h3`
+export const JobTitle = styled.h3`
   margin: 0;
   color: var(--h3-color);
 `;
 
-const Tags = styled.p`
+export const Tags = styled.p`
   color: var(--tags);
   font-size: 1.4rem;
   font-weight: bold;
 `;
 
 const OfferCard = ({
+  id,
   type,
   title,
   company,
@@ -50,15 +52,17 @@ const OfferCard = ({
   createdAt,
 }) => (
   <CardContainer>
-    <Logo companyLogo={companyLogo} />
-    <GeneralInfos>
-      {createdAt}d ago • {type}
-    </GeneralInfos>
-    <JobTitle>{title}</JobTitle>
-    <GeneralInfos>
-      {company.length > 30 ? company.slice(0, 30) + "..." : company}
-    </GeneralInfos>
-    <Tags>{location}</Tags>
+    <Link to={`/details/${id}`}>
+      <Logo companyLogo={companyLogo} />
+      <GeneralInfos>
+        {createdAt}d ago • {type}
+      </GeneralInfos>
+      <JobTitle>{title}</JobTitle>
+      <GeneralInfos>
+        {company.length > 30 ? company.slice(0, 30) + "..." : company}
+      </GeneralInfos>
+      <Tags>{location}</Tags>
+    </Link>
   </CardContainer>
 );
 

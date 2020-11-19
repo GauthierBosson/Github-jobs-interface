@@ -27,11 +27,11 @@ const Home = () => {
     },
     {
       getFetchMore: (lastGroup, allGroups) => {
-        const morePagesExist = lastGroup?.data.length === 50
+        const morePagesExist = lastGroup?.data.length === 50;
         if (morePagesExist) {
-          return lastGroup.cursor
+          return lastGroup.cursor;
         } else {
-          return false
+          return false;
         }
       },
     }
@@ -39,22 +39,20 @@ const Home = () => {
 
   return (
     <>
+      <Searchbar />
       {status === "loading" && <div>Loading data...</div>}
 
       {status === "error" && <div>Error while fetching data</div>}
 
       {status === "success" && (
-        <>
-          <Searchbar />
-          <OffersList
-            offers={data}
-            isFetchingMore={isFetchingMore}
-            fetchMore={fetchMore}
-            canFetchMore={canFetchMore}
-          />
-        </>
+        <OffersList
+          offers={data}
+          isFetchingMore={isFetchingMore}
+          fetchMore={fetchMore}
+          canFetchMore={canFetchMore}
+        />
       )}
-      {/* <ReactQueryDevtools initialIsOpen /> */}
+      <ReactQueryDevtools initialIsOpen />
     </>
   );
 };

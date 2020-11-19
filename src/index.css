@@ -20,6 +20,7 @@
   --input-text: hsl(219, 29%, 14%);
   --text: hsl(214, 17%, 51%);
   --h3-color: hsla(219, 29%, 14%);
+  --checkbox: hsla(219, 29%, 14%, 0.1);
 
   --secondary-btn: hsla(235.1,68.5%,61.4%,0.1);
   --secondary-btn-h: hsla(235.1,68.5%,61.4%,0.35);
@@ -34,10 +35,11 @@
   --input-text: hsl(0, 100%, 100%);
   --text: hsl(212, 23%, 69%);
   --h3-color: hsl(0, 100%, 100%);
+  --checkbox: hsla(0, 100%, 100%, 0.1);
 
   --secondary-btn: hsla(0, 0%, 100%, 0.1);
   --secondary-btn-h: hsla(0, 0%, 100%, 0.35);
-  --secondary-btn-text: hsl(0, 100%, 100%);
+  --secondary-btn-text: hsl(235.1,68.5%,61.4%);
 }
 
 * {
@@ -90,4 +92,8 @@ button {
   font-family: 'Kumbh Sans', sans-serif;
   font-weight: bold;
   font-size: 1.6rem;
+}
+
+a {
+  color: white;
 }
