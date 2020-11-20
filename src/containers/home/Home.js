@@ -4,6 +4,7 @@ import { ReactQueryDevtools } from "react-query-devtools";
 import axios from "axios";
 
 import Searchbar from "../../components/searchbar/Searchbar";
+import PlaceholderList from '../../components/offers-list/placeholder-list/PlaceholderList';
 
 const Home = () => {
   const {
@@ -40,7 +41,7 @@ const Home = () => {
   return (
     <>
       <Searchbar />
-      {status === "loading" && <div>Loading data...</div>}
+      {status === "loading" && <PlaceholderList />}
 
       {status === "error" && <div>Error while fetching data</div>}
 

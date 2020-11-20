@@ -1,6 +1,10 @@
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`
+
 export const CardContainer = styled.div`
   position: relative;
   display: flex;
@@ -52,7 +56,7 @@ const OfferCard = ({
   createdAt,
 }) => (
   <CardContainer>
-    <Link to={`/details/${id}`}>
+    <StyledLink to={`/details/${id}`}>
       <Logo companyLogo={companyLogo} />
       <GeneralInfos>
         {createdAt}d ago • {type}
@@ -62,7 +66,7 @@ const OfferCard = ({
         {company.length > 30 ? company.slice(0, 30) + "..." : company}
       </GeneralInfos>
       <Tags>{location}</Tags>
-    </Link>
+    </StyledLink>
   </CardContainer>
 );
 

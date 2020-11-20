@@ -3,7 +3,7 @@ import styled from "styled-components";
 import Button from "../../elements/button/Button";
 import OfferCard from "../offer-card/OfferCard";
 
-const OffersWrapper = styled.div`
+export const OffersWrapper = styled.div`
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 5rem 3rem;
@@ -19,7 +19,7 @@ const OffersWrapper = styled.div`
   }
 `;
 
-const BtnWrapper = styled.div`
+export const BtnWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: center;

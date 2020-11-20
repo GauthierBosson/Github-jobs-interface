@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 import styled from "styled-components";
 
 import Switch from "../../elements/switch/Switch";
@@ -15,22 +15,37 @@ const AppTitle = styled.h1`
 `;
 
 const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false)
+  const [mode, setMode] = useState(() => {
+    const theme = window.localStorage.getItem("theme");
+    return theme ? theme : "light";
+  });
 
   useEffect(() => {
-    if (darkMode) {
-      document.body.classList.remove('light')
-      document.body.classList.add('dark')
+    window.localStorage.setItem("theme", mode);
+
+    if (mode === "dark") {
+      document.body.classList.remove("light");
+      document.body.classList.add("dark");
     } else {
-      document.body.classList.remove('dark')
-      document.body.classList.add('light')
+      document.body.classList.remove("dark");
+      document.body.classList.add("light");
     }
-  }, [darkMode])
+  }, [mode]);
+
+  function toggleTheme() {
+    const currTheme = window.localStorage.getItem("theme");
+
+    if (currTheme === 'light') {
+      setMode("dark")
+    } else {
+      setMode("light")
+    }
+  }
 
   return (
     <NavbarContainer>
       <AppTitle>devjobs</AppTitle>
-      <Switch toggleMode={() => setDarkMode(!darkMode)} />
+      <Switch isDarkMode={mode} toggleMode={() => toggleTheme()} />
     </NavbarContainer>
   );
 };

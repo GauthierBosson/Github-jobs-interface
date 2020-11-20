@@ -84,6 +84,11 @@ p {
   line-height: 2.6rem;
 }
 
+li {
+  font-size: 1.6rem;
+  line-height: 2.6rem;
+}
+
 input {
   font-size: 1.6rem;
 }

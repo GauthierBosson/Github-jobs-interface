@@ -15,13 +15,13 @@ const DetailsContainer = styled.div`
 const Details = () => {
   const { id } = useParams();
 
-  const { data, status, isLoading } = useQuery("job", async () => {
+  const { data, status } = useQuery("job", async () => {
     const { data } = await axios.get(
       `https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions/${id}.json`
     );
 
     return data
-  });
+  }, { cacheTime: 0 });
 
 
   return (

@@ -7,7 +7,7 @@ const SwitchContainer = styled.div`
   min-height: 50px;
   width: 100px;
   background: url("/assets/desktop/icon-sun.svg") no-repeat left center,
-    url("assets/desktop/icon-moon.svg") no-repeat right center;
+    url("/assets/desktop/icon-moon.svg") no-repeat right center;
 `;
 
 const SwitchBody = styled.label`
@@ -45,9 +45,10 @@ const SwitchInput = styled.input`
   }
 `;
 
-const Switch = ({ toggleMode }) => (
+const Switch = ({ isDarkMode, toggleMode }) => (
   <SwitchContainer>
     <SwitchInput
+      checked={isDarkMode === "dark" ? true : false}
       type="checkbox"
       id="theme"
       onChange={() => toggleMode()}
