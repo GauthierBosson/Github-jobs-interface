@@ -1,3 +1,4 @@
+import React from 'react';
 import styled from "styled-components";
 
 const CheckboxLabel = styled.label`
@@ -39,12 +40,12 @@ const BaseCheckbox = styled.input`
   }
 `;
 
-const Checkbox = ({ name, label }) => (
+const Checkbox = React.forwardRef(({ name, label }, ref) => (
   <CheckboxLabel htmlFor={name}>
     {label}
-    <BaseCheckbox type="checkbox" id={name} name={name} />
+    <BaseCheckbox ref={ref} type="checkbox" id={name} name={name} />
     <CustomCheckbox />
   </CheckboxLabel>
-);
+));
 
 export default Checkbox;

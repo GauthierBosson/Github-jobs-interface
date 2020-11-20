@@ -36,9 +36,4 @@ const Button = styled.button`
   transition: .5s;
 `;
 
-Button.propTypes = {
-  type: PropTypes.oneOf(["primary", "secondary"]).isRequired,
-  children: PropTypes.isRequired,
-};
-
 export default Button;

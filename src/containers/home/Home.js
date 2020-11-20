@@ -38,9 +38,17 @@ const Home = () => {
     }
   );
 
+  function onSubmit(data, e) {
+    if(e.target.elements.submit) {
+
+    } else {
+      
+    }
+  }
+
   return (
     <>
-      <Searchbar />
+      <Searchbar onSubmit={onSubmit} />
       {status === "loading" && <PlaceholderList />}
 
       {status === "error" && <div>Error while fetching data</div>}

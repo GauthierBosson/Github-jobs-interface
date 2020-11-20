@@ -101,4 +101,5 @@ button {
 
 a {
   color: white;
+  word-wrap: break-word;
 }

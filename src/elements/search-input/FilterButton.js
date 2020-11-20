@@ -10,6 +10,10 @@ const FilterButton = styled.button`
   background: url('/assets/mobile/icon-filter.svg') no-repeat center center;
   width: 50px;
   height: 50px;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `
 
 export default FilterButton;

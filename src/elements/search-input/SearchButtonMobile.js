@@ -13,6 +13,10 @@ const StyledSearchButtonMobile = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
+
+  @media screen and (min-width: 1024px) {
+    display: none;
+  }
 `
 
 const SearchButtonMobile = () => (

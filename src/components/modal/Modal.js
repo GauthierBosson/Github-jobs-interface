@@ -41,7 +41,7 @@ function Modal({ isOpen, closeModal, children }) {
     }
 
     return () => modalRoot.removeChild(el);
-  }, [el]);
+  }, [el, isOpen]);
 
   return isOpen
     ? createPortal(
