@@ -1,12 +1,14 @@
 import OffersList from "../../components/offers-list/OffersList";
 import { useInfiniteQuery } from "react-query";
-import { ReactQueryDevtools } from "react-query-devtools";
 import axios from "axios";
+import { useHistory } from 'react-router-dom'
 
 import Searchbar from "../../components/searchbar/Searchbar";
 import PlaceholderList from '../../components/offers-list/placeholder-list/PlaceholderList';
 
 const Home = () => {
+  const history = useHistory();
+
   const {
     status,
     data,
@@ -40,9 +42,25 @@ const Home = () => {
 
   function onSubmit(data, e) {
     if(e.target.elements.submit) {
-
+      if (data.title.trim() !== "" && data.location.trim() !== "") {
+        history.push(`/search?title=${data.title}&location=${data.location}&fulltime=${data.fullTime}`)
+      } else if (data.title.trim() !== "" && data.location.trim() === "") {
+        history.push(`/search?title=${data.title}&fulltime=${data.fullTime}`)
+      } else if (data.title.trim() === "" && data.location.trim() !== "") {
+        history.push(`/search?location=${data.location}&fulltime=${data.fullTime}`)
+      } else {
+        return;
+      }
     } else {
-      
+      if (data.title.trim() !== "" && data.locationMobile.trim() !== "") {
+        history.push(`/search?title=${data.title}&location=${data.locationMobile}&fulltime=${data.fullTimeMobile}`)
+      } else if (data.title.trim() !== "" && data.locationMobile.trim() === "") {
+        history.push(`/search?title=${data.title}&fulltime=${data.fullTimeMobile}`)
+      } else if (data.title.trim() === "" && data.locationMobile.trim() !== "") {
+        history.push(`/search?location=${data.locationMobile}&fulltime=${data.fullTimeMobile}`)
+      } else {
+        return;
+      }
     }
   }
 
@@ -61,7 +79,7 @@ const Home = () => {
           canFetchMore={canFetchMore}
         />
       )}
-      <ReactQueryDevtools initialIsOpen />
+      {/* <ReactQueryDevtools initialIsOpen /> */}
     </>
   );
 };

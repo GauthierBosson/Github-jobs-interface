@@ -1,9 +1,9 @@
 import { useState } from "react";
 import styled from "styled-components";
-import { useForm } from 'react-hook-form';
+import { useForm } from "react-hook-form";
 
 import SearchInput from "../../elements/search-input/SearchInput";
-import FilterButton from "../../elements/search-input/FilterButton";
+// import FilterButton from "../../elements/search-input/FilterButton";
 import SearchButtonMobile from "../../elements/search-input/SearchButtonMobile";
 import Modal from "../../components/modal/Modal";
 import Checkbox from "../../elements/checkbox/Checkbox";
@@ -28,6 +28,9 @@ const BaseSearchInput = styled(SearchInput)`
     flex-basis: 33.33333%;
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
+    padding: 3rem 5rem 3rem 7rem;
+    background: url('/assets/desktop/icon-search.svg') no-repeat 25px center var(--elements-bg);
+    border-right: 1px solid gray;
   }
 `;
 
@@ -38,6 +41,9 @@ const LocationInput = styled(SearchInput)`
     display: block;
     flex-basis: 33.33333%;
     border-radius: 0;
+    padding: 3rem 5rem 3rem 7rem;
+    background: url('/assets/desktop/icon-location.svg') no-repeat 25px center var(--elements-bg);
+    border-right: 1px solid gray;
   }
 `;
 
@@ -78,12 +84,22 @@ const Searchbar = ({ onSubmit }) => {
   return (
     <SearchContainer>
       <form onSubmit={handleSubmit(onSubmit)}>
-        <BaseSearchInput name="title" placeholder="Filter by title" ref={register} />
-        <LocationInput name="location" placeholder="Filter by Location" ref={register} />
-        <FilterButton type="button" onClick={() => setIsOpen(true)} />
+        <BaseSearchInput
+          name="title"
+          placeholder="Filter by title"
+          ref={register}
+        />
+        <LocationInput
+          name="location"
+          placeholder="Filter by Location"
+          ref={register}
+        />
+        {/* <FilterButton type="button" onClick={() => setIsOpen(true)} /> */}
         <TypeContainer>
           <Checkbox name="fullTime" label="Full Time Only" ref={register} />
-          <Button name="submit" type="submit">Search</Button>
+          <Button name="submit" type="submit">
+            Search
+          </Button>
         </TypeContainer>
         <SearchButtonMobile />
         <Modal closeModal={() => closeModal()} isOpen={isOpen}>
@@ -93,8 +109,14 @@ const Searchbar = ({ onSubmit }) => {
             placeholder="Filter by location"
             ref={register}
           />
-          <Checkbox name="fullTimeMobile" label="Full Time Only" ref={register} />
-          <Button name="submitMobile" type="submit">Search</Button>
+          <Checkbox
+            name="fullTimeMobile"
+            label="Full Time Only"
+            ref={register}
+          />
+          <Button name="submitMobile" type="submit">
+            Search
+          </Button>
         </Modal>
       </form>
     </SearchContainer>

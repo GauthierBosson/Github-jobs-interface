@@ -6,6 +6,8 @@ import axios from "axios";
 import BodyDetails from "../../components/body-details/BodyDetails";
 import HeaderDetails from "../../components/header-details/HeaderDetails";
 import HowToApply from "../../components/how-to-apply/HowToApply";
+import HeaderPlaceholder from "../../components/header-details/header-placeholder/HeaderPlaceholder";
+import BodyPlaceholder from "../../components/body-details/body-placeholder/BodyPlaceholder";
 
 const DetailsContainer = styled.div`
   max-width: 960px;
@@ -26,7 +28,12 @@ const Details = () => {
 
   return (
     <>
-      {status === "loading" && <p>Loading...</p>}
+      {status === "loading" && (
+        <DetailsContainer>
+          <HeaderPlaceholder />
+          <BodyPlaceholder />
+        </DetailsContainer>
+      )}
 
       {status === "error" && <p>Error while fetching data</p>}
 

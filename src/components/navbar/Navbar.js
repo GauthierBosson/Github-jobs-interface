@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 import Switch from "../../elements/switch/Switch";
 
@@ -12,6 +13,7 @@ const NavbarContainer = styled.nav`
 
 const AppTitle = styled.h1`
   color: var(--primary-btn-text);
+  text-decoration: none;
 `;
 
 const Navbar = () => {
@@ -35,16 +37,18 @@ const Navbar = () => {
   function toggleTheme() {
     const currTheme = window.localStorage.getItem("theme");
 
-    if (currTheme === 'light') {
-      setMode("dark")
+    if (currTheme === "light") {
+      setMode("dark");
     } else {
-      setMode("light")
+      setMode("light");
     }
   }
 
   return (
     <NavbarContainer>
-      <AppTitle>devjobs</AppTitle>
+      <Link style={{ textDecoration: "none" }} to="/">
+        <AppTitle>devjobs</AppTitle>
+      </Link>
       <Switch isDarkMode={mode} toggleMode={() => toggleTheme()} />
     </NavbarContainer>
   );
